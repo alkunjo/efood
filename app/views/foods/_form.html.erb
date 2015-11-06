@@ -1,0 +1,35 @@
+<%= form_for(@food, :html => { :class => "form-horizontal", multipart: true },:remote => true,:authenticity_token => true) do |f| %>
+	<% if @food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% @food.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div class="form-group">
+		<div class="col-sm-2"><%= f.label :name %></div>
+		<div class="col-sm-1">: </div>
+		<div class="col-sm-4"><%= f.text_field :name, :class => "form-control" %></div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2"><%= f.label :description %></div>
+		<div class="col-sm-1">: </div>
+		<div class="col-sm-4"><%= f.text_area :description, :class => "form-control" %></div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2"><%= f.label :food_types %></div>
+		<div class="col-sm-1">: </div>
+		<div class="col-sm-4"><%= f.collection_select :food_types, FoodType.all, :id, :name, {prompt: "Select One"}, {class: "form-control"} %></div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2"><%= f.label :image %></div>
+		<div class="col-sm-1">: </div>
+		<div class="col-sm-4"><%= f.file_field :image, :class => "form-control" %></div>
+	</div>
+	
+	<%= f.submit :class => "btn btn-sm btn-primary" %>
+<% end %>
