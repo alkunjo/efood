@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  resources :package_details
+  resources :packages
+  resources :order_statuses
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   resources :foods
   resources :food_types
+  resources :store
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'store#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
