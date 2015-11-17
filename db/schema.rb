@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117164841) do
+ActiveRecord::Schema.define(version: 20151117165611) do
+
+  create_table "food_caterings", force: :cascade do |t|
+    t.integer  "price"
+    t.text     "additional"
+    t.integer  "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "food_caterings", ["food_id"], name: "index_food_caterings_on_food_id"
 
   create_table "food_types", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +48,16 @@ ActiveRecord::Schema.define(version: 20151117164841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "package_caterings", force: :cascade do |t|
+    t.integer  "price"
+    t.text     "additional"
+    t.integer  "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "package_caterings", ["package_id"], name: "index_package_caterings_on_package_id"
 
   create_table "package_details", force: :cascade do |t|
     t.integer  "package_id"
