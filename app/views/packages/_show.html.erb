@@ -1,0 +1,23 @@
+<div class="container" style="width:auto">
+	<p id="notice"><%= notice %></p>
+
+	<div class="row">
+		<div class="col-sm-3">Package Name</div>
+		<div class="col-sm-1">:</div>
+		<div class="col-sm-8"><%= @package.name %></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">Package Description</div>
+		<div class="col-sm-1">:</div>
+		<div class="col-sm-7"><%= @package.description %></div>
+	</div>
+	<div class="row" style="padding-left:20px">
+		<%= link_to 'Edit', edit_package_path(@package), :class => "btn btn-primary btn-sm", remote: true %>
+		<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+	</div>
+	<br/>
+	<div class="row">
+		<%= render "package_details/index" %>
+	</div>
+
+</div>

@@ -1,10 +1,15 @@
 class PackageDetailsController < ApplicationController
   before_action :set_package_detail, only: [:show, :edit, :update, :destroy]
 
+  def set_food
+    
+  end
+
   # GET /package_details
   # GET /package_details.json
   def index
-    @package_details = PackageDetail.all
+    @package = Package.find(params[:package_id])
+    @package_details = @package.package_details
   end
 
   # GET /package_details/1
@@ -14,25 +19,33 @@ class PackageDetailsController < ApplicationController
 
   # GET /package_details/new
   def new
-    @package_detail = PackageDetail.new
+    package = Package.find(params[:package_id])
+    @package_detail = package.package_details.build
+    respond_to do |format|
+      format.js { render :action => "new" }
+    end
   end
 
   # GET /package_details/1/edit
   def edit
+    package = Package.find(params[:package_id])
+    @package_detail = package.package_details.find(params[:id])
+    respond_to do |format|
+      format.js { render :action => "edit" }
+    end
   end
 
   # POST /package_details
   # POST /package_details.json
   def create
-    @package_detail = PackageDetail.new(package_detail_params)
+    package = Package.find(params[:package_id])
+    @package_detail = package.package_details.create(package_detail_params)
 
     respond_to do |format|
       if @package_detail.save
-        format.html { redirect_to @package_detail, notice: 'Package detail was successfully created.' }
-        format.json { render :show, status: :created, location: @package_detail }
+        format.html { redirect_to package_path(package) }
       else
-        format.html { render :new }
-        format.json { render json: @package_detail.errors, status: :unprocessable_entity }
+        format.js { render :action => "new" }
       end
     end
   end
@@ -40,6 +53,7 @@ class PackageDetailsController < ApplicationController
   # PATCH/PUT /package_details/1
   # PATCH/PUT /package_details/1.json
   def update
+    
     respond_to do |format|
       if @package_detail.update(package_detail_params)
         format.html { redirect_to @package_detail, notice: 'Package detail was successfully updated.' }

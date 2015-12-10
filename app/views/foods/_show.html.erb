@@ -1,0 +1,35 @@
+<div class="container">
+	<p id="notice"><%= notice %></p>
+
+	<div class="row">
+		<div class="col-sm-2">
+			<label>Food Name</label>
+		</div><div class="col-sm-1">:</div>
+		<div class="col-sm-9">
+			<%= @food.name %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<label>Food Description</label>
+		</div><div class="col-sm-1">:</div>
+		<div class="col-sm-9">
+			<%= @food.description %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<label>Food Image</label>
+		</div><div class="col-sm-1">:</div>
+		<div class="col-sm-9">
+			<%= image_tag @food.image.url(:large) %>
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-2" align="center">
+			<%= link_to 'Edit', edit_food_path(@food), :class => "btn btn-primary btn-sm", remote: true %>
+			<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+</div>

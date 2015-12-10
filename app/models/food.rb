@@ -9,7 +9,7 @@ class Food < ActiveRecord::Base
   # Validate content_type
 	validates_attachment_content_type :image, :content_type => /\Aimage/
   # Validate filename
-  validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
+  validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/, /jpg\Z/, /JPG\Z/]
   # Explicitly do not validate
   do_not_validate_attachment_file_type :image
 end

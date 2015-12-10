@@ -1,4 +1,4 @@
-<%= form_for(@package_detail) do |f| %>
+<%= form_for(@package_detail, :html => { :class => "form-horizontal"}) do |f| %>
   <% if @package_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@package_detail.errors.count, "error") %> prohibited this package_detail from being saved:</h2>

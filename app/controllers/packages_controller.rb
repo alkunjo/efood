@@ -15,10 +15,16 @@ class PackagesController < ApplicationController
   # GET /packages/new
   def new
     @package = Package.new
+    respond_to do |format|
+      format.js { render 'new' }
+    end
   end
 
   # GET /packages/1/edit
   def edit
+    respond_to do |format|
+      format.js { render 'edit' }
+    end
   end
 
   # POST /packages
@@ -28,11 +34,9 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.save
-        format.html { redirect_to @package, notice: 'Package was successfully created.' }
-        format.json { render :show, status: :created, location: @package }
+        format.html { redirect_to packages_path, notice: 'Package was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
+        format.js { render :action => "new" }
       end
     end
   end
@@ -42,11 +46,9 @@ class PackagesController < ApplicationController
   def update
     respond_to do |format|
       if @package.update(package_params)
-        format.html { redirect_to @package, notice: 'Package was successfully updated.' }
-        format.json { render :show, status: :ok, location: @package }
+        format.html { redirect_to packages_path, notice: 'Package was successfully updated.' }
       else
-        format.html { render :edit }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
+        format.js { render :action => "edit" }
       end
     end
   end
@@ -56,8 +58,7 @@ class PackagesController < ApplicationController
   def destroy
     @package.destroy
     respond_to do |format|
-      format.html { redirect_to packages_url, notice: 'Package was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to packages_path, notice: 'Package was successfully destroyed.' }
     end
   end
 
@@ -69,6 +70,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:name, :price, :description)
+      params.require(:package).permit(:name, :description)
     end
 end
