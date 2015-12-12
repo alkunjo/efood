@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :package_caterings
   resources :food_caterings
-  resources :package_details
-  resources :packages
+  resources :packages do
+    resources :package_details
+  end
+
   resources :order_statuses
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

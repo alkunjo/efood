@@ -3,11 +3,12 @@
 <h1>Listing Foods</h1>
 
 <%= link_to 'New Food', new_food_path, :class => "btn btn-default btn-sm", remote: true %>
-<table class="table table-hover">
+<table class="table table-hover table-responsive">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Food Type</th>
       <th>Image</th>
       <th colspan="3"><center>Actions</center></th>
     </tr>
@@ -18,7 +19,8 @@
       <tr>
         <td><%= food.name %></td>
         <td><%= food.description %></td>
-        <td><%= image_tag food.image.url(:med) %></td>
+        <td><%= ft = FoodType.find_by(id: food.food_types_id); ft.name %></td> 
+        <td><%= image_tag food.image.url(:med), :class => "img-responsive" %></td>
         <td><%= link_to 'Show', food, :class => "btn btn-default btn-sm", remote: true %></td>
         <td><%= link_to 'Edit', edit_food_path(food), :class => "btn btn-primary btn-sm", remote: true %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %></td>

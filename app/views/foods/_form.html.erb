@@ -23,7 +23,7 @@
 	<div class="form-group" style="padding-left:20px">
 		<div class="col-sm-3"><%= f.label :food_types %></div>
 		<div class="col-sm-1">: </div>
-		<div class="col-sm-7"><%= f.collection_select :food_types, FoodType.all, :id, :name, {prompt: "Select One"}, {class: "form-control"} %></div>
+		<div class="col-sm-7"><%= f.collection_select :food_types_id, @food_types, :id, :name, {prompt: "Select One"}, {class: "form-control"} %></div>
 	</div>
 	<div class="form-group" style="padding-left:20px">
 		<div class="col-sm-3"><%= f.label :image %></div>
