@@ -18,7 +18,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td><%= food.name %></td>
-        <td><%= food.description %></td>
+        <td><%= truncate(strip_tags(food.description),length: 80) %></td>
         <td><%= ft = FoodType.find_by(id: food.food_types_id); ft.name %></td> 
         <td><%= image_tag food.image.url(:med), :class => "img-responsive" %></td>
         <td><%= link_to 'Show', food, :class => "btn btn-default btn-sm", remote: true %></td>
