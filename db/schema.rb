@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151212003532) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "food_caterings", force: :cascade do |t|
     t.integer  "price"
     t.text     "additional"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151212003532) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "food_caterings", ["food_id"], name: "index_food_caterings_on_food_id"
+  add_index "food_caterings", ["food_id"], name: "index_food_caterings_on_food_id", using: :btree
 
   create_table "food_types", force: :cascade do |t|
     t.string   "name"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20151212003532) do
     t.datetime "updated_at",         null: false
   end
 
-  add_index "foods", ["food_types_id"], name: "index_foods_on_food_types_id"
+  add_index "foods", ["food_types_id"], name: "index_foods_on_food_types_id", using: :btree
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151212003532) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "package_caterings", ["package_id"], name: "index_package_caterings_on_package_id"
+  add_index "package_caterings", ["package_id"], name: "index_package_caterings_on_package_id", using: :btree
 
   create_table "package_details", force: :cascade do |t|
     t.integer  "package_id"
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20151212003532) do
     t.integer  "food_id"
   end
 
-  add_index "package_details", ["food_id"], name: "index_package_details_on_food_id"
-  add_index "package_details", ["package_id"], name: "index_package_details_on_package_id"
+  add_index "package_details", ["food_id"], name: "index_package_details_on_food_id", using: :btree
+  add_index "package_details", ["package_id"], name: "index_package_details_on_package_id", using: :btree
 
   create_table "packages", force: :cascade do |t|
     t.string   "name"
