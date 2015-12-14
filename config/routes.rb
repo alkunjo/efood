@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :orders
   resources :package_caterings
   resources :food_caterings
   resources :packages do
