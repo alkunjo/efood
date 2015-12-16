@@ -14,7 +14,6 @@
  *= require_self
  *= require font-awesome
  *= require rotating-card
- *= require style
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";

@@ -14,5 +14,4 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
-//= require simpleCart.min
 //= require_tree .

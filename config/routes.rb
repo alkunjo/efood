@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'store/index'
+
   resources :package_caterings
   resources :food_caterings
   resources :packages do
