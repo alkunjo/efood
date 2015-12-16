@@ -1,0 +1,27 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<% i = 1 %>
+<div class="container">
+  <% @foods.each do |food| %>
+    <div class="col-md-3">
+      <div class="card-container">
+        <div class="card">
+          <div class="front">
+            <div class="panel-heading">
+              <%= food.name %>
+            </div>
+            <div class="content">
+              <%= image_tag food.image.url(:large), :class => "img-responsive" %>
+            </div>
+          </div>
+          <div class="back">
+            <div class="content">
+              <%= food.description %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :store
 
   # You can have the root of your site routed with "root"
-  root 'foods#index'
+  root 'foods2#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

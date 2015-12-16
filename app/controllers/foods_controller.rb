@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+	layout "application"
 	before_action :set_food, only: [:show, :edit, :update, :destroy]
 	#before_action :food_type_data, only: [:new, :edit, :create, :update]	
 
