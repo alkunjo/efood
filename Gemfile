@@ -36,6 +36,7 @@ gem 'devise', '~> 3.4.0'
 gem 'will_paginate-bootstrap'
 
 gem 'yaml_db'
+gem 'seed_dump'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
