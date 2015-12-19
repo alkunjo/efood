@@ -8,6 +8,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= yield %>
+	<nav class="navbar navbar-default" role="navigation" style="background: #B51927">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header" style="background: #B51927">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#iniloh">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" style="color:#FFFFFF" href="/">E-Fooderation</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="iniloh">
+	      <ul class="nav navbar-nav">
+	        <li><a style="color: #FFFFFF" href="/catering2/index">Catering</a></li>
+	        <li><a style="color: #FFFFFF" href="#">Login</a></li>
+	        <li><a style="color: #FFFFFF" href="/about/index">Tentang Kami</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="container" style="padding-top:0">
+		<!-- banner -->
+		<div class="row banner" align="center" id="banner">
+			
+		</div>
+		<!-- banner -->
+
+		<!-- content -->
+		<div class="row" style="padding:10px">
+			<%= yield %>
+		</div>
+		<!-- content -->
+
+		<!-- footer -->
+		<div class="row" style="background:#B51927; color:#FFFFFF; min-height:50px; padding:10px; font-size:18px">
+			<center>E-Fooderation Team © 2015</center>
+		</div>
+		<!-- footer -->
+	</div>
 </body>
 </html>

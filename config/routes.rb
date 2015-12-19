@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'about/index'
+
+  get 'catering2/index'
+
+  devise_for :caterings
+  scope "/admin" do
+    resources :caterings
+  end
   get 'store/index'
 
   resources :package_caterings

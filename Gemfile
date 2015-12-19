@@ -32,6 +32,8 @@ gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'font-awesome-rails'
 gem 'heroku'
+gem 'devise', '~> 3.4.0'
+gem 'will_paginate-bootstrap'
 
 gem 'yaml_db'
 # Use Unicorn as the app server

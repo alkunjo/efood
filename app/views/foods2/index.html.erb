@@ -1,27 +1,39 @@
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Warning!</strong>
+    <p id="notice"><%= notice %></p>
+  </div>
 <% end %>
-<% i = 1 %>
+<div align="center">
+  <%= will_paginate @foods, renderer: BootstrapPagination::Rails %>
+</div>
 <div class="container">
   <% @foods.each do |food| %>
     <div class="col-md-3">
       <div class="card-container">
         <div class="card">
           <div class="front">
-            <div class="panel-heading">
-              <%= food.name %>
+            <div class="panel-heading" style="background:#e33747">
+              <center><h4 style="color:#FFFFFF"><%= food.name %></h4></center>
             </div>
-            <div class="content">
+            <div class="content" align="center">
               <%= image_tag food.image.url(:large), :class => "img-responsive" %>
             </div>
           </div>
           <div class="back">
-            <div class="content">
-              <%= food.description %>
+            <div class="content" style="padding-top:50px">
+              <center>
+                <%= food.description %> <br/><br/>
+                <a href="#" class="btn btn-sm btn-primary" style="color:#FFFFFF">Beli Sekarang</a>
+              </center>
             </div>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+</div>
+<div align="center">
+  <%= will_paginate @foods, renderer: BootstrapPagination::Rails %>
 </div>

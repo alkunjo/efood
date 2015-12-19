@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214045442) do
+ActiveRecord::Schema.define(version: 20151218071623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "caterings", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "caterings", ["email"], name: "index_caterings_on_email", unique: true, using: :btree
+  add_index "caterings", ["reset_password_token"], name: "index_caterings_on_reset_password_token", unique: true, using: :btree
 
   create_table "food_caterings", force: :cascade do |t|
     t.integer  "price"
@@ -62,10 +80,12 @@ ActiveRecord::Schema.define(version: 20151214045442) do
     t.integer  "price"
     t.text     "additional"
     t.integer  "package_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "catering_id"
   end
 
+  add_index "package_caterings", ["catering_id"], name: "index_package_caterings_on_catering_id", using: :btree
   add_index "package_caterings", ["package_id"], name: "index_package_caterings_on_package_id", using: :btree
 
   create_table "package_details", force: :cascade do |t|
@@ -85,4 +105,5 @@ ActiveRecord::Schema.define(version: 20151214045442) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "package_caterings", "caterings"
 end
