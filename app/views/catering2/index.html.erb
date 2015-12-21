@@ -18,14 +18,20 @@
               <center><h4 style="color:#FFFFFF"><%= catering.name %></h4></center>
             </div>
             <div class="content" align="center">
-              <%= image_tag catering.image.url(:large), :class => "img-responsive" %>
+              <%= image_tag catering.logo.url(:large), :class => "img-responsive" %>
             </div>
           </div>
           <div class="back">
             <div class="content" style="padding-top:50px">
               <center>
-                <%= catering.description %> <br/><br/>
-                <a href="#" class="btn btn-sm btn-primary" style="color:#FFFFFF">Pesan Sekarang</a>
+                <i class="fa fa-map-marker fa-fw text-muted"></i>
+                <%= catering.address %> <br/><br/>
+                <%= catering.email %> <br/><br/>
+                <i class="fa fa-phone fa-fw text-muted"></i>
+                <%= catering.phone %> <br/><br/>
+                <i class="fa fa-tachometer fa-fw text-muted"></i>
+                <%= catering.capacity %> <br/><br/>
+                <a href="#" class="btn btn-sm btn-primary" style="color:#FFFFFF">Menu dan Paket</a>
               </center>
             </div>
           </div>

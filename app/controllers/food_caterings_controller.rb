@@ -1,10 +1,11 @@
 class FoodCateringsController < ApplicationController
+  #before_filter :authenticate_user!
   before_action :set_food_catering, only: [:show, :edit, :update, :destroy]
 
   # GET /food_caterings
   # GET /food_caterings.json
   def index
-    @food_caterings = FoodCatering.all
+    @food_caterings = FoodCatering.where(:catering_id => current_catering.id)
   end
 
   # GET /food_caterings/1
@@ -14,6 +15,7 @@ class FoodCateringsController < ApplicationController
 
   # GET /food_caterings/new
   def new
+    @foods = Food.order(:name)
     @food_catering = FoodCatering.new
   end
 
@@ -24,7 +26,8 @@ class FoodCateringsController < ApplicationController
   # POST /food_caterings
   # POST /food_caterings.json
   def create
-    @food_catering = FoodCatering.new(food_catering_params)
+    @food_catering.catering_id = current_catering.id
+    #@food_catering = FoodCatering.new(food_catering_params)
 
     respond_to do |format|
       if @food_catering.save
@@ -54,6 +57,7 @@ class FoodCateringsController < ApplicationController
   # DELETE /food_caterings/1
   # DELETE /food_caterings/1.json
   def destroy
+    set_catering
     @food_catering.destroy
     respond_to do |format|
       format.html { redirect_to food_caterings_url, notice: 'Food catering was successfully destroyed.' }

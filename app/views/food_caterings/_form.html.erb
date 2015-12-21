@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <%= f.label :food %><br>
+    <%= f.collection_select :food_id, @foods, :id, :name, {prompt: "Select One"} %>
+  </div>
+  <div class="form-group">
     <%= f.label :price %><br>
-    <%= f.number_field :price %>
+    <%= f.text_field :price %>
   </div>
   <div class="field">
     <%= f.label :additional %><br>
     <%= f.text_area :additional %>
   </div>
-  <div class="field">
-    <%= f.label :food_id %><br>
-    <%= f.text_field :food_id %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-sm btn-primary" %>
   </div>
 <% end %>

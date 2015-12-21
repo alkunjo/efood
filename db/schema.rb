@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218071623) do
+ActiveRecord::Schema.define(version: 20151221033723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20151218071623) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "phone"
+    t.string   "address"
+    t.integer  "capacity"
+    t.string   "username"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.integer  "food_caterings_id"
+    t.integer  "package_caterings_id"
   end
 
   add_index "caterings", ["email"], name: "index_caterings_on_email", unique: true, using: :btree
@@ -38,10 +49,12 @@ ActiveRecord::Schema.define(version: 20151218071623) do
     t.integer  "price"
     t.text     "additional"
     t.integer  "food_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "catering_id"
   end
 
+  add_index "food_caterings", ["catering_id"], name: "index_food_caterings_on_catering_id", using: :btree
   add_index "food_caterings", ["food_id"], name: "index_food_caterings_on_food_id", using: :btree
 
   create_table "food_types", force: :cascade do |t|
